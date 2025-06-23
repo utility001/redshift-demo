@@ -6,3 +6,6 @@ Use terraform to provision a data warehouse.
 Set up 3 compute nodes cluster and Push it to github
 
 Next class is Monday, 23rd June, and each team would present on the deep dive and terraform provision.
+
+# Architecture Diagram
+![](./images/arch_diag.jpg)
