@@ -1,7 +1,7 @@
 # REDSHIFT SUBNET GROUP
 resource "aws_redshift_subnet_group" "subnet_group" {
   name       = "rdshift-subnet-group"
-  subnet_ids = [aws_subnet.private_sub.id, aws_subnet.public_sub.id]
+  subnet_ids = [aws_subnet.private_sub.id]
 }
 
 # REDSHFIT CLUSTER
