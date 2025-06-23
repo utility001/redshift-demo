@@ -1,11 +1,7 @@
 # REDSHIFT SUBNET GROUP
 resource "aws_redshift_subnet_group" "subnet_group" {
-  name       = "rdshift_subnet_group"
-  subnet_ids = [aws_subnet.private_sub.id]
-
-  tags = {
-    environment = "Production"
-  }
+  name       = "rdshift-subnet-group"
+  subnet_ids = [aws_subnet.private_sub.id, aws_subnet.public_sub.id]
 }
 
 # REDSHFIT CLUSTER
@@ -15,12 +11,12 @@ resource "aws_redshift_cluster" "redshift_cluster" {
 
   database_name = "mydb"
 
-  node_type       = "dc2.large" # 15gb ram, 2 default node slices, 
+  node_type       = "dc2.large" # 15gb ram, 2 default node slices, etc
   number_of_nodes = 3
 
   master_username        = "admin"
   manage_master_password = true # Whether to use SecretsManager to manage the admin credential
 
-  vpc_security_group_ids    = [aws_security_group.tt_pub_sg.id]
+  vpc_security_group_ids    = [aws_security_group.redshift_sg.id]
   cluster_subnet_group_name = aws_redshift_subnet_group.subnet_group.name
 }

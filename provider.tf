@@ -1,4 +1,4 @@
 # Configure the AWS Provider
 provider "aws" {
-  region = "eu-central-1" # Stockholm Germany
+  region = "eu-central-1"
 }
